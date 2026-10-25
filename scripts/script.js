@@ -25,7 +25,7 @@ topics.forEach((topic) => {
 
 // Using hardcoded types options for now
 // TODO: Add feature to customize types
-const types = ['Article', 'Video', 'Podcast', 'Playlist', 'Website', 'Book'];
+const types = ['Article', 'Video', 'Podcast', 'Playlist', 'Website', 'Book', 'Tutorial'];
 
 const resourceTypeDropdownElement = document.getElementById('resource-type');
 types.forEach((type) => {
