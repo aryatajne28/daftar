@@ -42,7 +42,7 @@ function saveResources() {
 
 function deleteResource(event) {
     const resourceIdToDelete = event.target.dataset.id;
-
+    if (resourceIdToDelete === resourceIdToEdit) cancelEditMode();
     resources = resources.filter((resource) => resource.id !== resourceIdToDelete);
 
     saveResources();
@@ -67,20 +67,19 @@ function editResource(event) {
     })
 }
 
+function cancelEditMode() {
+    resourceIdToEdit = null;
+    addResourceForm.reset();
+    removeCancelButton();
+}
 
 function addCancelButton() {
     if (cancelButton) return;
     cancelButton = document.createElement('button');
     cancelButton.type = 'button';
     cancelButton.textContent = 'Cancel';
-    cancelButton.addEventListener('click', () => {
-        resourceIdToEdit = null;
-        addResourceForm.reset();
-        removeCancelButton();
-    });
-
+    cancelButton.addEventListener('click', cancelEditMode);
     addResourceForm.appendChild(cancelButton);
-
 }
 
 function removeCancelButton() {
