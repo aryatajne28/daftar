@@ -68,6 +68,16 @@ svg {
     border-radius: 50%;
     border: none;
     aspect-ratio: 1;
+    cursor: pointer;
+    color: #2a3546;
+}
+
+.favourite-icon {
+    fill: currentColor;
+}
+
+.favourite-button.is-favourite {
+    color: green;
 }
 
 .menu-button {
