@@ -142,7 +142,7 @@ function createActionsMenu(resource) {
     const actions = [
         { label: 'Edit', icon: EDIT_ICON, handler: editResource },
         { label: 'Delete', icon: DELETE_ICON, handler: deleteResource },
-        { label: 'Archive', icon: ARCHIVE_ICON, handler: toggleArchive },
+        { label: resource.archived ? 'Unarchive' : 'Archive', icon: ARCHIVE_ICON, handler: toggleArchive },
     ];
 
     actions.forEach(({ label, icon, handler }) => {
