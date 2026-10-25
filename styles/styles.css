@@ -32,10 +32,9 @@
     height: 180px;
 }
 
-.icon {
-    width: 2em;
-    height: 2em;
-    color: currentColor;
+svg {
+    width: 1.5em;
+    height: 1.5em;
 }
 
 .favourite-button {
@@ -47,4 +46,17 @@
     right: 8px;
     border-radius: 50%;
     aspect-ratio: 1;
+}
+
+.menu-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    border-radius: 4px;
+}
+
+.menu-button:hover {
+    background: rgb(202, 200, 200);
 }
