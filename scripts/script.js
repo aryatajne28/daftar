@@ -8,6 +8,7 @@ let resources = parsedSavedResources ?? [];
 
 let resourceIdToEdit = null;
 let cancelButton = null;
+const submitButton = document.getElementById('submit-button');
 
 // Using hardcoded topics options for now
 // TODO: Add feature to customize topics
@@ -42,7 +43,7 @@ function saveResources() {
 
 function deleteResource(event) {
     const resourceIdToDelete = event.target.dataset.id;
-    if (resourceIdToDelete === resourceIdToEdit) cancelEditMode();
+    if (resourceIdToDelete === resourceIdToEdit) exitEditMode();
     resources = resources.filter((resource) => resource.id !== resourceIdToDelete);
 
     saveResources();
@@ -59,6 +60,7 @@ function editResource(event) {
     resourceIdToEdit = event.target.dataset.id;
     const resourceToEdit = resources.find(resource => resource.id === resourceIdToEdit);
     addCancelButton();
+    submitButton.textContent = 'Save changes';
 
     Object.entries(resourceToEdit).forEach(([key, value]) => {
         if (addResourceForm.elements[key]) {
@@ -67,10 +69,11 @@ function editResource(event) {
     })
 }
 
-function cancelEditMode() {
+function exitEditMode() {
     resourceIdToEdit = null;
     addResourceForm.reset();
     removeCancelButton();
+    submitButton.textContent = 'Add resource';
 }
 
 function addCancelButton() {
@@ -78,7 +81,7 @@ function addCancelButton() {
     cancelButton = document.createElement('button');
     cancelButton.type = 'button';
     cancelButton.textContent = 'Cancel';
-    cancelButton.addEventListener('click', cancelEditMode);
+    cancelButton.addEventListener('click', exitEditMode);
     addResourceForm.appendChild(cancelButton);
 }
 
@@ -100,12 +103,12 @@ addResourceForm.addEventListener('submit', (event) => {
     if (resourceIdToEdit) {
         const resourceToEdit = resources.find((res) => res.id === resourceIdToEdit);
         Object.assign(resourceToEdit, resource);
-        resourceIdToEdit = null;
-        removeCancelButton();
+        exitEditMode();
     }
-    else addResource(resource);
-
-    addResourceForm.reset();
+    else {
+        addResource(resource);
+        addResourceForm.reset();
+    };
     saveResources();
     renderResources();
 })
