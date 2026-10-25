@@ -1,3 +1,5 @@
+'use strict';
+
 const savedResources = localStorage.getItem('resources');
 const parsedSavedResources = JSON.parse(savedResources);
 
@@ -54,7 +56,7 @@ function addResource(resource) {
 }
 
 function editResource(event) {
-    const resourceIdToEdit = event.target.dataset.id;
+    resourceIdToEdit = event.target.dataset.id;
     const resourceToEdit = resources.find(resource => resource.id === resourceIdToEdit);
     addCancelButton();
 
@@ -72,7 +74,7 @@ function addCancelButton() {
     cancelButton.type = 'button';
     cancelButton.textContent = 'Cancel';
     cancelButton.addEventListener('click', () => {
-        resourceIdToEditdToEdit = null;
+        resourceIdToEdit = null;
         addResourceForm.reset();
         removeCancelButton();
     });
@@ -97,14 +99,14 @@ addResourceForm.addEventListener('submit', (event) => {
     const resource = Object.fromEntries(formData);
 
     if (resourceIdToEdit) {
-        const resouceToEdit = resources.find((res) => res.id === idToEdit);
-        resouceToEdit.resource_name = res.activity_name;
-        resouceToEdit.resource_url = res.resource_url;
-        resouceToEdit.topic = res.topic;
-        resouceToEdit.resource_type = res.resource_type;
-        resouceToEdit.notes = res.notes;
+        const resouceToEdit = resources.find((res) => res.id === resourceIdToEdit);
+        resouceToEdit.resource_name = resource.resource_name;
+        resouceToEdit.resource_url = resource.resource_url;
+        resouceToEdit.topic = resource.topic;
+        resouceToEdit.resource_type = resource.resource_type;
+        resouceToEdit.notes = resource.notes;
 
-        idToEdit = null;
+        resourceIdToEdit = null;
         removeCancelButton();
     }
     else addResource(resource);
