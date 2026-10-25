@@ -3,6 +3,7 @@
 body {
     font-family: 'Google Sans', sans-serif;
     background-color: #FAFBFC;
+    margin: 0;
 }
 
 
@@ -200,4 +201,49 @@ svg {
     display: grid;
     gap: 16px;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    min-height: 100vh;
+}
+
+#resource-sidenav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 24px 16px;
+    background-color: #F6F7F9;
+    border-right: 1px solid #DDE1E8;
+}
+
+#resource-sidenav button {
+    padding: 12px;
+    border: none;
+    color: #1B2433;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 12px;
+}
+
+#resource-sidenav button:hover {
+    background-color: rgba(47, 75, 143, 0.08);
+}
+
+#resource-sidenav button.active {
+    background-color: #ccecc0;
+}
+
+.main-content {
+    min-width: 0;
+    padding: 24px;
 }

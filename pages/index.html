@@ -9,35 +9,45 @@
 </head>
 
 <body>
-    <form id="add-resource">
-        <label for="resource-name">Resource name:</label>
-        <input id="resource-name" name="resource_name" type="text" />
-        <br>
+    <div class="main-container">
+        <aside class="sidebar">
+            <nav id="resource-sidenav">
+                <button data-view="library">Library</button>
+                <button data-view="favourites">Favourites</button>
+                <button data-view="archive">Archive</button>
+            </nav>
+        </aside>
 
-        <label for="resource-url">URL:</label>
-        <input id="resource-url" name="resource_url" type="url" />
-        <br>
+        <main class="main-content">
+            <form id="add-resource">
+                <label for="resource-name">Resource name:</label>
+                <input id="resource-name" name="resource_name" type="text" />
+                <br>
 
-        <label for="topics">Select topic:</label>
-        <select id="topics" name="topic"></select>
-        <br>
+                <label for="resource-url">URL:</label>
+                <input id="resource-url" name="resource_url" type="url" />
+                <br>
 
-        <label for="resource-type">Type:</label>
-        <select id="resource-type" name="resource_type"></select>
-        <br>
+                <label for="topics">Select topic:</label>
+                <select id="topics" name="topic"></select>
+                <br>
 
-        <label for="notes">Notes:</label>
-        <textarea id="notes" name="notes"></textarea>
-        <br>
+                <label for="resource-type">Type:</label>
+                <select id="resource-type" name="resource_type"></select>
+                <br>
 
-        <button type="submit" id="submit-button">Add resource</button>
-    </form>
+                <label for="notes">Notes:</label>
+                <textarea id="notes" name="notes"></textarea>
+                <br>
 
-    <div id="resources-list-container">
+                <button type="submit" id="submit-button">Add resource</button>
+            </form>
 
+            <div id="resources-list-container"></div>
+        </main>
     </div>
-
     <script src="../scripts/script.js"></script>
+
 </body>
 
 </html>

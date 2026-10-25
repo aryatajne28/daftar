@@ -39,6 +39,28 @@ types.forEach((type) => {
 
 let currentView = 'library';
 
+const sideNavElement = document.getElementById('resource-sidenav');
+
+function updateNavState() {
+    sideNavElement.querySelectorAll('button').forEach((button) => {
+
+        const isActive = button.dataset.view === currentView;
+        button.classList.toggle('active', isActive);
+
+    })
+};
+
+sideNavElement.addEventListener('click', (event) => {
+    const clickedButton = event.target.closest('button');
+    if (!clickedButton) return;
+
+    currentView = clickedButton.dataset.view;
+    updateNavState();
+    renderResources();
+});
+
+updateNavState();
+
 function getVisibleResources() {
     switch (currentView) {
         case 'favourites':
@@ -57,7 +79,7 @@ function saveResources() {
 };
 
 function deleteResource(event) {
-    const resourceIdToDelete = event.target.dataset.id;
+    const resourceIdToDelete = event.currentTarget.dataset.id;
     if (resourceIdToDelete === resourceIdToEdit) exitEditMode();
     resources = resources.filter((resource) => resource.id !== resourceIdToDelete);
 
@@ -72,7 +94,7 @@ function addResource(resource) {
 }
 
 function editResource(event) {
-    resourceIdToEdit = event.target.dataset.id;
+    resourceIdToEdit = event.currentTarget.dataset.id;
     const resourceToEdit = resources.find(resource => resource.id === resourceIdToEdit);
     addCancelButton();
     submitButton.textContent = 'Save changes';
