@@ -39,5 +39,28 @@ addResourceForm.addEventListener('submit', (event) => {
     resources.push(resource);
 
     addResourceForm.reset();
-    console.log(resources);
+    console.log(resources); //TODO Remove later
+
+    renderResources();
 })
+
+function renderResources() {
+
+    const resourcesListElement = document.getElementById('resources-list');
+    resourcesListElement.innerHTML = '';
+
+    resources.forEach((resource) => {
+
+        const listItemElement = document.createElement('li');
+        listItemElement.textContent = `${resource.resource_name} - ${resource.topic} - `
+
+        const linkElement = document.createElement('a');
+        linkElement.setAttribute('href', resource.resource_url);
+        linkElement.setAttribute('target', '_blank');
+        linkElement.textContent = 'Open link';
+
+        listItemElement.appendChild(linkElement);
+
+        resourcesListElement.appendChild(listItemElement);
+    })
+}
