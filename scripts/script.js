@@ -2,7 +2,7 @@ let resources = [];
 
 // Using hardcoded topics options for now
 // TODO: Add feature to customize topics
-const topics = ['Literature', 'Fronted', 'AI', 'Productivity'];
+const topics = ['Literature', 'Frontend', 'AI', 'Productivity'];
 
 const topicsDropdownElement = document.getElementById('topics');
 topics.forEach((topic) => {
@@ -25,4 +25,19 @@ types.forEach((type) => {
     optionElement.value = type;
     optionElement.textContent = type;
     resourceTypeDropdownElement.appendChild(optionElement);
+})
+
+const addResourceForm = document.getElementById('add-resource');
+
+addResourceForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(addResourceForm);
+
+    const resource = Object.fromEntries(formData);
+
+    resources.push(resource);
+
+    addResourceForm.reset();
+    console.log(resources);
 })

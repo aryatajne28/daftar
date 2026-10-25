@@ -22,15 +22,19 @@
         <br>
 
         <label for="resource-type">Type:</label>
-        <select id="resource-type" name="resource-type"></select>
+        <select id="resource-type" name="resource_type"></select>
         <br>
 
         <label for="notes">Notes:</label>
         <textarea id="notes" name="notes"></textarea>
         <br>
 
+        <button type="submit" id="add-button">Add resource</button>
     </form>
 
+    <div id="resources-list-container">
+        <ul id="resources-list"></ul>
+    </div>
 
     <script src="../scripts/script.js"></script>
 </body>
