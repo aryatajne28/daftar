@@ -1,4 +1,9 @@
-let resources = [];
+const savedResources = localStorage.getItem('resources');
+const parsedSavedResources = JSON.parse(savedResources);
+
+
+let resources = parsedSavedResources ? parsedSavedResources : [];
+
 
 // Using hardcoded topics options for now
 // TODO: Add feature to customize topics
@@ -13,7 +18,6 @@ topics.forEach((topic) => {
     topicsDropdownElement.appendChild(optionElement);
 })
 
-
 // Using hardcoded types options for now
 // TODO: Add feature to customize types
 const types = ['Article', 'Video', 'Podcast', 'Playlist', 'Website', 'Book'];
@@ -27,6 +31,11 @@ types.forEach((type) => {
     resourceTypeDropdownElement.appendChild(optionElement);
 })
 
+function saveResources() {
+    let resourcesString = JSON.stringify(resources);
+    localStorage.setItem('resources', resourcesString);
+};
+
 const addResourceForm = document.getElementById('add-resource');
 
 addResourceForm.addEventListener('submit', (event) => {
@@ -36,11 +45,11 @@ addResourceForm.addEventListener('submit', (event) => {
 
     const resource = Object.fromEntries(formData);
 
-    resources.push(resource);
+    resources.push({ ...resource, id: crypto.randomUUID() });
 
     addResourceForm.reset();
     console.log(resources); //TODO Remove later
-
+    saveResources();
     renderResources();
 })
 
@@ -64,3 +73,5 @@ function renderResources() {
         resourcesListElement.appendChild(listItemElement);
     })
 }
+
+renderResources();
