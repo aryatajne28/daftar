@@ -36,6 +36,15 @@ function saveResources() {
     localStorage.setItem('resources', resourcesString);
 };
 
+function deleteResource(event) {
+    const resourceIdToDelete = event.target.dataset.id;
+
+    resources = resources.filter((resource) => resource.id != resourceIdToDelete);
+
+    saveResources();
+    renderResources();
+}
+
 const addResourceForm = document.getElementById('add-resource');
 
 addResourceForm.addEventListener('submit', (event) => {
@@ -67,8 +76,13 @@ function renderResources() {
         linkElement.setAttribute('href', resource.resource_url);
         linkElement.setAttribute('target', '_blank');
         linkElement.textContent = 'Open link';
-
         listItemElement.appendChild(linkElement);
+
+        const deleteButtonElement = document.createElement('button');
+        deleteButtonElement.textContent = 'Delete';
+        deleteButtonElement.dataset.id = resource.id;
+        deleteButtonElement.addEventListener('click', deleteResource);
+        listItemElement.appendChild(deleteButtonElement);
 
         resourcesListElement.appendChild(listItemElement);
     })
