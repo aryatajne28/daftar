@@ -99,13 +99,8 @@ addResourceForm.addEventListener('submit', (event) => {
     const resource = Object.fromEntries(formData);
 
     if (resourceIdToEdit) {
-        const resouceToEdit = resources.find((res) => res.id === resourceIdToEdit);
-        resouceToEdit.resource_name = resource.resource_name;
-        resouceToEdit.resource_url = resource.resource_url;
-        resouceToEdit.topic = resource.topic;
-        resouceToEdit.resource_type = resource.resource_type;
-        resouceToEdit.notes = resource.notes;
-
+        const resourceToEdit = resources.find((res) => res.id === resourceIdToEdit);
+        Object.assign(resourceToEdit, resource);
         resourceIdToEdit = null;
         removeCancelButton();
     }
