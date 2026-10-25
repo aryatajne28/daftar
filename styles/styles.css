@@ -1,0 +1,50 @@
+.resource-card {
+    border: 1px solid black;
+    max-width: 280px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.resource-content {
+    padding: 0px 16px 0px 16px;
+}
+
+.resource-header,
+.resource-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.resource-notes {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.resource-card img {
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    height: 180px;
+}
+
+.icon {
+    width: 2em;
+    height: 2em;
+    color: currentColor;
+}
+
+.favourite-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border-radius: 50%;
+    aspect-ratio: 1;
+}
