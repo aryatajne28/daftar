@@ -37,6 +37,20 @@ types.forEach((type) => {
     resourceTypeDropdownElement.appendChild(optionElement);
 })
 
+let currentView = 'library';
+
+function getVisibleResources() {
+    switch (currentView) {
+        case 'favourites':
+            return resources.filter((resource) => resource.favourite && !resource.archived);
+        case 'archive':
+            return resources.filter((resource) => resource.archived);
+        case 'library':
+        default:
+            return resources.filter((resource) => !resource.archived);
+    }
+}
+
 function saveResources() {
     let resourcesString = JSON.stringify(resources);
     localStorage.setItem('resources', resourcesString);
@@ -210,8 +224,8 @@ function renderResources() {
     const resourcesListElement = document.getElementById('resources-list-container');
     resourcesListElement.innerHTML = '';
 
-    resources.forEach((resource) => {
-
+    getVisibleResources().forEach((resource) => {
+        
         const resourceCardElement = document.createElement('article');
         resourceCardElement.className = 'resource-card';
 
