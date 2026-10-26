@@ -197,6 +197,7 @@ svg {
 }
 
 #resources-list-container {
+    margin-top: 24px;
     width: 100%;
     display: grid;
     gap: 16px;
