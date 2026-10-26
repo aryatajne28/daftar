@@ -372,5 +372,13 @@ dialog::backdrop {
     ;
     font-size: 32px;
     font-weight: bolder;
-    color: #4F7D32
+    color: #FFA14E;
+    display: flex;
+    gap: 8px;
+    
+}
+
+.logo-image {
+    height: 36px;
+    width: auto;
 }

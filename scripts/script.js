@@ -294,7 +294,7 @@ function renderResources() {
         // TODO add image validation later
         const imageElement = document.createElement('img');
         // hardcoded link for now
-        imageElement.src = 'https://developer.mozilla.org/pimg/aHR0cHM6Ly9zdGF0aWM0LmJ1eXNlbGxhZHMubmV0L3V1LzIvMTc2NDc2LzE3ODE3OTE1MjItTW96aWxsYS1TZWxmaG9zdGluZy1Db250ZW50XzUwMHg1MDAuanBn.4FNLhsBsDeUNm8oN0c4osLwwersene8YFmykzCCX7zA%3D'
+        imageElement.src = '../assets/TextLogo.png'
         imageElement.alt = '';
         resourceCardElement.appendChild(imageElement);
 
