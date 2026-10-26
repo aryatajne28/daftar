@@ -234,6 +234,9 @@ svg {
     cursor: pointer;
     font-size: 16px;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px
 }
 
 #resource-sidenav button:hover {
@@ -339,7 +342,7 @@ dialog::backdrop {
 #submit-button {
     background-color: #ccecc0;
     border: 1px solid #77c25b
-}   
+}
 
 .main-view-header {
     display: flex;
@@ -351,6 +354,10 @@ dialog::backdrop {
     font-size: larger;
     padding: 8px 16px;
     border-radius: 8px;
-    border: 1px solid rgb(239, 228, 228);
-    cursor: pointer;
+    background-color: #ccecc0;
+    border: 1px solid #77c25b;
+         cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
