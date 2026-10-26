@@ -115,9 +115,12 @@ function exitEditMode() {
 const resourceFormDialog = document.getElementById('resource-form-dialog');
 const addResourceButton = document.getElementById('add-resource-button')
 const cancelFormButton = document.getElementById('cancel-button');
+const closeFormButton = document.getElementById('close-dialog-button');
+
 
 addResourceButton.addEventListener('click', () => resourceFormDialog.showModal());
 cancelFormButton.addEventListener('click', () => resourceFormDialog.close());
+closeFormButton.addEventListener('click', () => resourceFormDialog.close());
 
 addResourceForm.addEventListener('submit', (event) => {
     event.preventDefault();

@@ -22,28 +22,50 @@
             <button id="add-resource-button" class="add-resource-button">Add resource</button>
             <dialog id="resource-form-dialog">
                 <form id="add-resource">
-                    <label for="resource-name">Resource name:</label>
-                    <input id="resource-name" name="resource_name" type="text" />
-                    <br>
+                    <header class="form-header">
+                        <h2>Add resource</h2>
+                        <button type="button" id="close-dialog-button" class="close-dialog-button">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                <path
+                                    d="M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z" />
+                            </svg>
+                        </button>
+                    </header>
 
-                    <label for="resource-url">URL:</label>
-                    <input id="resource-url" name="resource_url" type="url" />
-                    <br>
+                    <div class="field">
+                        <label for="resource-name">Resource name:</label>
+                        <input id="resource-name" name="resource_name" type="text"
+                            placeholder="e.g. Web dev fundamentals" />
+                    </div>
 
-                    <label for="topics">Select topic:</label>
-                    <select id="topics" name="topic"></select>
-                    <br>
+                    <div class="field">
+                        <label for="resource-url">URL:</label>
+                        <input id="resource-url" name="resource_url" type="url" placeholder="https://" />
+                    </div>
 
-                    <label for="resource-type">Type:</label>
-                    <select id="resource-type" name="resource_type"></select>
-                    <br>
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="topics">Select topic:</label>
+                            <select id="topics" name="topic"></select>
+                        </div>
 
-                    <label for="notes">Notes:</label>
-                    <textarea id="notes" name="notes"></textarea>
-                    <br>
+                        <div class="field">
+                            <label for="resource-type">Type:</label>
+                            <select id="resource-type" name="resource_type"></select>
+                        </div>
+                    </div>
 
-                    <button type="submit" id="submit-button">Add resource</button>
-                    <button type="button" id="cancel-button">Cancel</button>
+
+                    <div class="field">
+                        <label for="notes">Notes:</label>
+                        <textarea id="notes" name="notes"
+                            placeholder="Add your notes, key takeaways or why you saved this..."></textarea>
+                    </div>
+                    <footer class="form-footer">
+                        <button type="button" id="cancel-button">Cancel</button>
+                        <button type="submit" id="submit-button">Add resource</button>
+                    </footer>
                 </form>
             </dialog>
             <div id="resources-list-container"></div>

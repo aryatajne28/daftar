@@ -247,3 +247,95 @@ svg {
     min-width: 0;
     padding: 24px;
 }
+
+dialog {
+    width: min(440px, calc(100vw - 32px));
+    padding: 24px;
+    border: 1px solid rgb(197, 197, 197);
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(27, 36, 51, 0.18);
+}
+
+dialog::backdrop {
+    background-color: rgba(27, 36, 51, 0.4);
+}
+
+#add-resource {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.close-dialog-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.form-header h2 {
+    margin: 4px;
+    font: 2rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #DDE1E8;
+    border-radius: 8px;
+    background-color: #F6F7F9;
+    color: #1B2433;
+    font: inherit;
+}
+
+.field textarea {
+    min-height: 96px;
+    resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    outline: 2px solid #2F4B8F;
+    outline-offset: 1px;
+    background-color: white;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.form-footer button {
+    font-size: 18px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+}
+
+#submit-button {
+    background-color: #ccecc0;
+    border: 1px solid #77c25b
+}   
