@@ -9,17 +9,20 @@ It stores every data in browser's localstorage, your data never leaves your devi
 
 Demo link: https://aryatajne28.github.io/daftar/pages/
 
+How to run:
+
+After opening the demo, first thing you will get is:
 Initial screen:
 <img width="1919" height="999" alt="Screenshot 2026-10-26 091002" src="https://github.com/user-attachments/assets/d1185bb7-9857-4c0f-8c19-ca2b84d126b8" />
 This will tell you little meaning about Daftar!
 
+Resources listing:
+<img width="1918" height="998" alt="Screenshot 2026-10-26 090932" src="https://github.com/user-attachments/assets/ecef3a07-00e9-4549-b332-0e92b9557718" />
+All you resources are listed this way. Here you can also view your favourites and archived ones. For now, click on "Add project"
+
 Adding a new resource:
 <img width="1919" height="1001" alt="Screenshot 2026-10-26 090948" src="https://github.com/user-attachments/assets/a452361e-5437-4879-b84c-111ac095e3d6" />
 You can add a new resource using this Form.
-
-Resources listing:
-<img width="1918" height="998" alt="Screenshot 2026-10-26 090932" src="https://github.com/user-attachments/assets/ecef3a07-00e9-4549-b332-0e92b9557718" />
-All you resources are listed this way. Here you can also view your favourites and archived ones.
 
 Actions menu:
 <img width="1918" height="998" alt="Screenshot 2026-10-26 090941" src="https://github.com/user-attachments/assets/4812b290-7cc5-4110-8f8b-fd711a61061d" />
