@@ -356,3 +356,10 @@ function renderResources() {
 
 updateViewHeader();
 renderResources();
+
+
+const aboutDialog = document.getElementById('about-dialog');
+
+document.getElementById('about-close-button').addEventListener('click', () => aboutDialog.close());
+
+aboutDialog.showModal();

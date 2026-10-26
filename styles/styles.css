@@ -369,9 +369,7 @@ dialog::backdrop {
 
 .logo-span {
     font-family: "Rosarivo", 'Times New Roman', Times, serif;
-    ;
     font-size: 32px;
-    font-weight: bolder;
     color: #FFA14E;
     display: flex;
     gap: 8px;
@@ -382,3 +380,55 @@ dialog::backdrop {
     height: 36px;
     width: auto;
 }
+
+#about-title {    
+    font-family: "Rosarivo", 'Times New Roman', Times, serif;
+    color: #FFA14E;
+    font-size: 32px;
+}
+
+.about-dialog {
+    width: min(560px, calc(100vw - 30px));
+    padding: 32px;
+    position: relative;
+}
+
+.dialog-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.about-daftar-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px
+}
+
+.about-logo {
+    height: 56px;
+    width: auto;
+}
+
+.about-words {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    text-align: center;
+}
+
+.about-note {
+    font-size: 0.875rem;
+    color: grey;
+}
+
+.word-script {
+    color: #FFA14E;
+    font-size: large;
+}
+.word-script[lang="hi"] { font-family: 'Noto Sans Devanagari', sans-serif; }
+.word-script[lang="ar"] { font-family: 'Noto Naskh Arabic', serif; }
