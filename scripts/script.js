@@ -56,6 +56,7 @@ sideNavElement.addEventListener('click', (event) => {
     currentView = clickedButton.dataset.view;
     updateNavState();
     renderResources();
+    updateViewHeader();
 });
 
 updateNavState();
@@ -161,6 +162,35 @@ const EMPTY_MESSAGES = {
     favourites: 'No favourites yet. Tap the heart on any resources to add them to favourites',
     archive: 'Nothing in archives'
 };
+
+const VIEW_HEADERS = {
+    library: {
+        title: 'Your library',
+        subtitle: "Save what's worth coming back to",
+    },
+    favourites: {
+        title: 'Favourites',
+        subtitle: "All your favourite resources at one place",
+    },
+    archive: {
+        title: 'Archive',
+        subtitle: "See your set aside collection",
+    }
+}
+
+const mainViewTitleELement = document.getElementById('main-view-title');
+const mainViewSubtitleElement = document.getElementById('main-view-subtitle');
+
+function updateViewHeader() {
+
+    const headerObject = VIEW_HEADERS[currentView] ?? VIEW_HEADERS.library;
+
+    mainViewTitleELement.textContent = headerObject.title;
+    mainViewSubtitleElement.textContent = headerObject.subtitle;
+
+    addResourceButton.hidden = currentView === 'archive';
+}
+
 
 function createActionsMenu(resource) {
     const containerElement = document.createElement('div');
@@ -324,4 +354,5 @@ function renderResources() {
     })
 }
 
+updateViewHeader();
 renderResources();
