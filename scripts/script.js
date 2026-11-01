@@ -58,32 +58,53 @@ function saveUserExists() {
     saveToLocalstorage(LOCALSTORAGE_KEYS.user_exists, true);
 };
 
-let resourceIdToEdit = null;
-const submitButton = document.getElementById('submit-button');
+function addTopic(name) {
+    const cleanedName = name.trim();
+    if (!cleanedName) return false;
 
-// Using hardcoded topics options for now
-// TODO: Add feature to customize topics
+    const alreadyExists = topics.some((topic) => topic.toLowerCase() === cleanedName.toLowerCase());
+    if (alreadyExists) return false;
+
+    topics.push(name);
+    saveTopics();
+    return true;
+};
+
+// Deleting a topic which already has some resources will move those resources to 'Other' topic.
+function deleteTopic(name) {
+    if (name === FALLBACK_TOPIC) return;
+
+    resources.forEach((resource) => {
+        if (resource.topic === name) {
+            resource.topic = FALLBACK_TOPIC;
+        };
+    });
+    saveResources();
+
+    topics.filter((topic) => topic !== name);
+    saveTopics();
+};
+
 const topicsDropdownElement = document.getElementById('topics');
-topics.forEach((topic) => {
-
-    const optionElement = document.createElement('option');
-    optionElement.value = topic;
-    optionElement.textContent = topic;
-    topicsDropdownElement.appendChild(optionElement);
-})
-
-
 const resourceTypeDropdownElement = document.getElementById('resource-type');
-types.forEach((type) => {
 
-    const optionElement = document.createElement('option');
-    optionElement.value = type;
-    optionElement.textContent = type;
-    resourceTypeDropdownElement.appendChild(optionElement);
-})
+function fillDropdown(selectDOMElement, options) {
+    selectDOMElement.innerHTML = '';
+    options.forEach((optionText) => {
+        const optionElement = document.createElement('option');
+        optionElement.value = optionText;
+        optionElement.textContent = optionText;
+        selectDOMElement.appendChild(optionElement);
+    });
+};
 
+fillDropdown(topicsDropdownElement, topics);
+fillDropdown(resourceTypeDropdownElement, types);
+
+let resourceIdToEdit = null;
 let currentView = 'library';
 
+const submitButton = document.getElementById('submit-button');
 const sideNavElement = document.getElementById('resource-sidenav');
 
 function updateNavState() {
