@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>daftar - onboarding</title>
+</head>
+
+<body>
+    <main>
+        <form>
+            <p id="progress" class="progress">Step 1 of 3</p>
+
+            <fieldset class="step">
+
+                <legend for="user-name">
+                    Enter your name:
+                </legend>
+                <input type="text" id="user-name" name="userName">
+                <p class="hint">Optional. It stays in your browser.</p>
+            </fieldset>
+
+            <fieldset class="step" hidden>
+                <legend>Which topics do you save your things under:</legend>
+                <ul id="topic-list" class="chip-list"></ul>
+                <div class="add-row">
+                    <input type="text" id="new-topic-input">
+                    <button type="button" id="topic-add">Add</button>
+                </div>
+                <p id="topic-message" class="hint" role="status"></p>
+                <p class="hint">Tap a topic to remove it. Can change these later</p>
+            </fieldset>
+
+            <fieldset class="step" hidden>
+                <legend>Which types of resources?</legend>
+                <ul id="type-list" class="chip-list"></ul>
+                <div class="add-row">
+                    <input type="text" id="new-type-input">
+                    <button id="type-add">Add</button>
+                </div>
+                <p id="type-message" class="hint" role="status"></p>
+                <p class="hint">Skip this to keep the usual ones.</p>
+            </fieldset>
+
+            <div class="step-actions">
+                <button id="back-button">Back</button>
+                <button id="skip-button">Skip</button>
+                <button id="next-button">Next</button>
+            </div>
+        </form>
+    </main>
+
+    <script src="../scripts/storage.js"></script>
+    <script src="../scripts/script.js"></script>
+</body>
+
+</html>
