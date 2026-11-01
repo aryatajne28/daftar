@@ -1,19 +1,68 @@
 'use strict';
 
+const LOCALSTORAGE_KEYS = {
+    resources: 'resources',
+    resource_topics: 'resources_topics',
+    resource_types: 'resources_types',
+    author_name: 'author_name',
+    user_exists: 'user_exists',
+}
 
-const savedResources = localStorage.getItem('resources');
-const parsedSavedResources = JSON.parse(savedResources);
+const DEFAULT_RESOURCE_TOPICS = ['Literature', 'Frontend', 'AI', 'Productivity'];
+const DEFAULT_RESOURCE_TYPES = ['Article', 'Video', 'Podcast', 'Playlist', 'Website', 'Book', 'Tutorial'];
+const FALLBACK_TOPIC = 'Other';
 
+function loadFromLocalstorage(key, fallback_value) {
+    try {
+        const saved = localStorage.getItem(key);
+        return saved = null ? fallback : JSON.parse(saved);
+    } catch (error) {
+        console.error(`Could not read ${key} value from localStorage`, error);
+        return fallback_value;
+    }
+}
 
-let resources = parsedSavedResources ?? [];
+function saveToLocalstorage(key, value) {
+    try {
+        localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+        console.error(`Failed to save ${value} in ${key}`, error);
+    }
+}
+
+function withFallbackTopic(list) {
+    return list.includes(FALLBACK_TOPIC) ? list : [...list, FALLBACK_TOPIC];
+};
+
+let resources = loadFromLocalstorage(LOCALSTORAGE_KEYS.resources, []);
+let topics = withFallbackTopic(loadFromLocalstorage(LOCALSTORAGE_KEYS.resource_topics, DEFAULT_RESOURCE_TOPICS));
+let types = loadFromLocalstorage(LOCALSTORAGE_KEYS.resource_types, DEFAULT_RESOURCE_TYPES);
+let userName = loadFromLocalstorage(LOCALSTORAGE_KEYS.author_name, '');
+let doesUserExists = loadFromLocalstorage(LOCALSTORAGE_KEYS.user_exists, false);
+
+// Save data to localstorage
+function saveResources() {
+    saveToLocalstorage(LOCALSTORAGE_KEYS.resources, resources)
+};
+function saveTopics() {
+    saveToLocalstorage(LOCALSTORAGE_KEYS.resource_topics, topics);
+};
+function saveTypes() {
+    saveToLocalstorage(LOCALSTORAGE_KEYS.resource_types, types);
+};
+function saveUserName() {
+    saveToLocalstorage(LOCALSTORAGE_KEYS.author_name, userName);
+};
+function saveUserExists() {
+    doesUserExists = true;
+    saveToLocalstorage(LOCALSTORAGE_KEYS.user_exists, true);
+};
 
 let resourceIdToEdit = null;
 const submitButton = document.getElementById('submit-button');
 
 // Using hardcoded topics options for now
 // TODO: Add feature to customize topics
-const topics = ['Literature', 'Frontend', 'AI', 'Productivity'];
-
 const topicsDropdownElement = document.getElementById('topics');
 topics.forEach((topic) => {
 
@@ -23,9 +72,6 @@ topics.forEach((topic) => {
     topicsDropdownElement.appendChild(optionElement);
 })
 
-// Using hardcoded types options for now
-// TODO: Add feature to customize types
-const types = ['Article', 'Video', 'Podcast', 'Playlist', 'Website', 'Book', 'Tutorial'];
 
 const resourceTypeDropdownElement = document.getElementById('resource-type');
 types.forEach((type) => {
@@ -72,11 +118,6 @@ function getVisibleResources() {
             return resources.filter((resource) => !resource.archived);
     }
 }
-
-function saveResources() {
-    let resourcesString = JSON.stringify(resources);
-    localStorage.setItem('resources', resourcesString);
-};
 
 function deleteResource(event) {
     const resourceIdToDelete = event.currentTarget.dataset.id;
